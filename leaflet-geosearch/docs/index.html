@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaflet.GeoSearch / Google Provider</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
+
+     <link rel="stylesheet" href="dist/style.css" />
+     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" />
+	
+	 <!-- Load JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+     <!-- Load JQuery UI -->
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+     <script type="text/javascript" src="dist/bundle.min.js" charset="utf-8"></script>
+     <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
+  
+      <script type="text/javascript">
+      handleOnLoad = function() {
+        L.Icon.Default.imagePath = 'https://unpkg.com/leaflet@0.7.7/dist/images/';
+      }
+    </script>
+  </head>
+<body onload="handleOnLoad()">
+
+
+<div id='map' style="height:500px;  position: relative;">
+ 
+	  <Button lat="" lng="" id='locatebutton' class="fab FolderTitle Closed" aria-hidden="true" onClick="refreshPage()">
+	  </Button>
+	  
+	</div>
+
+  <form id="form1">
+  
+	<input type ="text">
+	<input type="submit" value="Submit">
+  
+  </form>
+  
+
+<script>
+var GeoSearchControl = window.GeoSearch.GeoSearchControl;
+var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+
+// remaining is the same as in the docs, accept for the var instead of const declarations
+var provider = new OpenStreetMapProvider();
+
+var searchControl = new GeoSearchControl({
+  provider: provider,
+});
+
+var map = new L.Map('map');
+map.addControl(searchControl);
+
+
+
+const formTest = document.getElementById('form1').querySelector('form1');
+const input = document.getElementById('form1').querySelector('input[type="text"]');
+
+document.getElementById('form1').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+ // const results = await provider.search("london" );
+  //console.log(results); // » [{}, {}, {}, ...]
+});
+  
+  
+
+
+
+
+</script>
+
+
+
+
+
+
+  <!--<div id="app"></div>-->
+
+  
+  
+</body>
+</html>
